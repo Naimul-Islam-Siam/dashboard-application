@@ -7,7 +7,7 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { links } from "./../data/dummy";
 
 const Sidebar = () => {
-   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+   const { activeMenu, setActiveMenu, screenSize, currentThemeColor } = useStateContext();
    const handleCloseSidebar = () => {
       if (activeMenu && screenSize <= 900) {
          setActiveMenu(false);
@@ -39,7 +39,13 @@ const Sidebar = () => {
                         {item.title}
                      </p>
                      {item.links.map((link) => (
-                        <NavLink to={`/${link.name}`} onClick={handleCloseSidebar} key={link.name} className={({ isActive }) => isActive ? activeLinkStyle : normalLinkStyle}>
+                        <NavLink
+                           to={`/${link.name}`}
+                           onClick={handleCloseSidebar}
+                           key={link.name}
+                           style={({ isActive }) => ({ backgroundColor: isActive ? currentThemeColor : "" })}
+                           className={({ isActive }) => isActive ? activeLinkStyle : normalLinkStyle}
+                        >
                            {link.icon}
                            <span className="capitalize">{link.name}</span>
                         </NavLink>

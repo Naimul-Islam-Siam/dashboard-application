@@ -5,8 +5,8 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 
-
 const ECommerce = () => {
+   const { currentThemeColor } = useStateContext();
    return (
       <div className="mt-12">
          <div className="flex flex-wrap lg:flex-nowrap justify-center">
@@ -18,7 +18,7 @@ const ECommerce = () => {
                   </div>
                </div>
                <div className="mt-6">
-                  <Button text="Download" color="white" bgColor="blue" size="md" borderRadius="10px" />
+                  <Button text="Download" color="white" bgColor={currentThemeColor} size="md" borderRadius="10px" />
                </div>
             </div>
 
@@ -38,7 +38,7 @@ const ECommerce = () => {
             </div>
 
             <div className="flex flex-wrap gap-10 justify-center">
-               <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl m-3 md:w-780">
+               <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl m-3 p-4 md:w-780">
                   <div className="flex justify-between">
                      <p className="font-semibold text-xl">Revenue Updates</p>
                      <div className="flex gap-4 items-center">
@@ -73,11 +73,11 @@ const ECommerce = () => {
                      </div>
 
                      <div className="mt-5">
-                        <SparkLineChart currentColor="blue" color="blue" id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} />
+                        <SparkLineChart currentColor={currentThemeColor} color={currentThemeColor} id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} />
                      </div>
 
                      <div className="mt-10">
-                        <Button color="white" bgColor="blue" text="Download Report" borderRadius="10px" />
+                        <Button color="white" bgColor={currentThemeColor} text="Download Report" borderRadius="10px" />
                      </div>
 
                      <div>
