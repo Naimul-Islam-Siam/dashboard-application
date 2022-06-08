@@ -7,6 +7,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 
 const ECommerce = () => {
    const { currentThemeColor } = useStateContext();
+
    return (
       <div className="mt-12">
          <div className="flex flex-wrap lg:flex-nowrap justify-center">
@@ -16,6 +17,10 @@ const ECommerce = () => {
                      <p className="font-bold text-gray-400">Earnings</p>
                      <p className="text-2xl">$63,448.78</p>
                   </div>
+
+                  <button type="button" style={{ backgroundColor: currentThemeColor }} className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4">
+                     <BsCurrencyDollar />
+                  </button>
                </div>
                <div className="mt-6">
                   <Button text="Download" color="white" bgColor={currentThemeColor} size="md" borderRadius="10px" />
