@@ -5,7 +5,7 @@ import { Header } from "../components";
 
 const Orders = () => {
    return (
-      <div className="m-2 md:m-10 p-2 md:p-10 rounded-3xl bg-white">
+      <div className="m-2 md:m-10 p-2 md:p-10 rounded-3xl bg-white dark:bg-secondary-dark-bg">
          <Header category="Page" title="Orders" />
          <GridComponent id="gridcomp" dataSource={ordersData} contextMenuItems={contextMenuItems} allowPaging allowSorting>
             <ColumnsDirective>

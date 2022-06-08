@@ -5,7 +5,7 @@ import { Header } from "../components";
 
 const Employees = () => {
    return (
-      <div className="m-2 md:m-10 p-2 md:p-10 rounded-3xl bg-white">
+      <div className="m-2 md:m-10 p-2 md:p-10 rounded-3xl bg-white dark:bg-secondary-dark-bg">
          <Header category="Page" title="Employees" />
          <GridComponent dataSource={employeesData} toolbar={["Search"]} width="auto" allowPaging allowSorting>
             <ColumnsDirective>
