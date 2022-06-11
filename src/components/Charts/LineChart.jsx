@@ -22,6 +22,7 @@ const LineChart = () => {
                <SeriesDirective key={index} {...item} />
             ))}
          </SeriesCollectionDirective>
+
          <Inject services={[LineSeries, DateTime, Tooltip, Legend]} />
       </ChartComponent>
    );
