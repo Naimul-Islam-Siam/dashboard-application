@@ -3,12 +3,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Calendar, ColorPicker, Customers, ECommerce, Editor, Employees, Kanban, Orders, Area, Bar, ColorMapping, Financial, Line, Pie, Pyramid, Stacked } from "./pages";
+import { Calendar, ColorPicker, Customers, ECommerce, Editor, Employees, Kanban, Orders, Area, ColorMapping, Financial, Line, Pie, Stacked } from "./pages";
 import { useStateContext } from './contexts/ContextProvider';
 import "./App.css";
 
 const App = () => {
-   const { activeMenu, themeSettings, setThemeSettings, currentThemeColor, currentThemeMode } = useStateContext();
+   const { activeMenu, themeSettings, setThemeSettings, currentThemeColor, currentThemeMode, setCurrentThemeColor, setCurrentThemeMode } = useStateContext();
+
+   useEffect(() => {
+      const currentThemeColor = localStorage.getItem("colorMode");
+      const currentThemeMode = localStorage.getItem("themeMode");
+      if (currentThemeColor && currentThemeMode) {
+         setCurrentThemeColor(currentThemeColor);
+         setCurrentThemeMode(currentThemeMode);
+      }
+   }, [setCurrentThemeColor, setCurrentThemeMode]);
 
    return (
       <div className={currentThemeMode === "Dark" ? "dark" : ""}>
@@ -57,11 +66,9 @@ const App = () => {
                         {/* Charts */}
                         <Route path="/line" element={<Line />} />
                         <Route path="/area" element={<Area />} />
-                        <Route path="/bar" element={<Bar />} />
                         <Route path="/pie" element={<Pie />} />
                         <Route path="/financial" element={<Financial />} />
                         <Route path="/color-mapping" element={<ColorMapping />} />
-                        <Route path="/pyramid" element={<Pyramid />} />
                         <Route path="/stacked" element={<Stacked />} />
                      </Routes>
                   </div>
