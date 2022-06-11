@@ -22,6 +22,7 @@ const AreaChart = () => {
                <SeriesDirective key={index} {...item} />
             ))}
          </SeriesCollectionDirective>
+
          <Inject services={[SplineAreaSeries, DateTime, Legend]} />
       </ChartComponent>
    );
