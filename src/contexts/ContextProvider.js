@@ -34,7 +34,7 @@ export const ContextProvider = ({ children }) => {
    };
 
    return (
-      <StateContext.Provider value={{ activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize, currentThemeColor, setCurrentThemeColor, currentThemeMode, setCurrentThemeMode, setThemeMode, setThemeColor, themeSettings, setThemeSettings }}>
+      <StateContext.Provider value={{ activeMenu, setActiveMenu, isClicked, setIsClicked, initialState, handleClick, screenSize, setScreenSize, currentThemeColor, setCurrentThemeColor, currentThemeMode, setCurrentThemeMode, setThemeMode, setThemeColor, themeSettings, setThemeSettings }}>
          {children}
       </StateContext.Provider>
    );
