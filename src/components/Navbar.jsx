@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
 import { RiNotification3Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "./../data/avatar.jpg";
-import { Chat, Cart, Notification, UserProfile } from "./index";
+import { Chat, Notification, UserProfile } from "./index";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -19,7 +18,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-   const { currentThemeColor, activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize } = useStateContext();
+   const { currentThemeColor, activeMenu, setActiveMenu, isClicked, handleClick, screenSize, setScreenSize } = useStateContext();
    const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
    useEffect(() => {
@@ -29,7 +28,7 @@ const Navbar = () => {
       handleResize();
 
       return () => window.removeEventListener("resize", handleResize);
-   }, []);
+   }, [setScreenSize]);
 
    useEffect(() => {
       if (screenSize <= 900) {
@@ -37,14 +36,13 @@ const Navbar = () => {
       } else {
          setActiveMenu(true);
       }
-   }, [screenSize]);
+   }, [setActiveMenu, screenSize]);
 
    return (
       <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
          <NavButton title="Menu" customFunc={handleActiveMenu} icon={<AiOutlineMenu />} color={currentThemeColor} />
 
          <div className="flex">
-            <NavButton title="Cart" icon={<FiShoppingCart />} color={currentThemeColor} customFunc={() => handleClick("cart")} />
             <NavButton title="Chat" icon={<BsChatLeft />} color="#03C9D7" customFunc={() => handleClick("chat")} />
             <NavButton title="Notifications" icon={<RiNotification3Line />} color="#03C9D7" customFunc={() => handleClick("notification")} />
             <TooltipComponent content="Profile" position="BottomCenter">
@@ -58,7 +56,6 @@ const Navbar = () => {
                </div>
             </TooltipComponent>
 
-            {isClicked.cart && <Cart />}
             {isClicked.chat && <Chat />}
             {isClicked.notification && <Notification />}
             {isClicked.userProfile && <UserProfile />}
